@@ -1,0 +1,920 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>朴实是最长的路 - 方田文化人物志</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Han Serif SC', 'STSongti', 'Song', serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* ========== 导航栏 ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(44, 139, 163, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2C3E50;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #2C8BA3;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2C8BA3;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ========== 英雄区 ========== */
+        .hero {
+            margin-top: 70px;
+            height: 100vh;
+            background: linear-gradient(135deg, #2C7FB8 0%, #4da6d6 50%, #7ac5e8 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-label {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== 内容区域 ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        /* ========== 封面和简介 ========== */
+        .intro-section {
+            padding: 100px 60px;
+            background: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .intro-image {
+            position: relative;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .intro-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid #2C8BA3;
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .intro-content {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .intro-label {
+            color: #2C8BA3;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .intro-title {
+            font-size: 48px;
+            color: #2C3E50;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .intro-subtitle {
+            font-size: 20px;
+            color: #7F8C8D;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 2;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #2C8BA3 0%, #1E7A9A 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(44, 139, 163, 0.3);
+        }
+
+        /* ========== 文章内容 ========== */
+        .content-section {
+            padding: 100px 60px;
+            background: white;
+            margin-top: 60px;
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .content-label {
+            color: #2C8BA3;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .content-title {
+            font-size: 42px;
+            color: #2C3E50;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #2C8BA3 0%, #2C8BA3 100%);
+            margin: 30px auto 0;
+        }
+
+        /* ========== 章节卡片 ========== */
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .section-card {
+            background: #f8fafb;
+            padding: 50px;
+            border-radius: 8px;
+            border-left: 4px solid #2C8BA3;
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-number {
+            font-size: 48px;
+            color: #2C8BA3;
+            font-weight: 700;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #2C3E50;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-content {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: #2C8BA3;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #1E7A9A;
+        }
+
+        /* ========== 照片集合 ========== */
+        .photos-section {
+            padding: 100px 60px;
+            background: white;
+            margin-top: 60px;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .photo-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-caption {
+            padding: 20px;
+            background: #f8fafb;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* ========== 完整文章 ========== */
+        .full-article {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px;
+            background: white;
+            margin-top: 60px;
+            border-radius: 8px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 60px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .article-content {
+            font-size: 17px;
+            line-height: 2;
+            color: #333;
+        }
+
+        .article-content p {
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .article-content h3 {
+            font-size: 24px;
+            color: #2C8BA3;
+            margin: 60px 0 30px 0;
+            font-weight: 700;
+        }
+
+        /* ========== 底部 ========== */
+        footer {
+            background: #2C3E50;
+            color: white;
+            padding: 80px 60px 40px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 2;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 2px;
+            background: #2C8BA3;
+            margin: 30px auto;
+        }
+
+        .footer-info {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 1024px) {
+            .intro-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            nav, .container, .intro-section, .content-section, .full-article, footer {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .intro-title {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .photos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">方田文化</div>
+            <ul class="nav-links">
+                <li><a href="#hero">首页</a></li>
+                <li><a href="#intro">人物</a></li>
+                <li><a href="#photos">相册</a></li>
+                <li><a href="#full">全文</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-label">方田文化 · 人物志</div>
+            <h1 class="hero-title">朴实是最长的路</h1>
+            <p class="hero-subtitle">The Plain Road Is the Longest Road</p>
+            <p class="hero-desc">
+                从前台到芜湖校长，陈茹用十年走过了一条关于朴实与坚韧的长路。<br>
+                她说，“组织需要我做，我就做。”在默默耕耘中沉淀出最令人敬服的力量。
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2v16m0 0l-7-7m7 7l7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 人物简介 -->
+    <section class="intro-section" id="intro">
+      <div class="intro-image">
+    <img src="image_01.png" alt="陈茹" style="width:100%; height:auto;">
+</div>
+        <div class="intro-content">
+            <div class="intro-label">关于人物</div>
+            <h2 class="intro-title">陈茹</h2>
+            <p class="intro-subtitle">从前台老师到芜湖校长的十年</p>
+            <div class="intro-text">
+                见到陈茹老师之前，我搜过她的照片。那是一张很标准的证件照，端正，有点像教导主任。我脑子里已经把这个人安排好了：说话掷地有声，眼神锐利，进来先把规矩讲清楚的那种。但真人走过来和我打招呼，我愣了一下。利落的短发，黑金色的圆框眼镜，看起来像高中班里最认真念书的那种学霸。她讲话轻声细语，笑起来眼睛弯弯的，和我想象的完全不一样。她身上有种很难被描述的气质，就像冬天的河水，表面平静，底下的力道藏得很深。
+                <br><br>
+                茹姐大概就是这样的人——我们叫她茹姐。踏实、理性、有逻辑，这是她自己用来描述自己的词，也是我坐在她对面时真实感受到的。我们采访过她、和她共事过的人，还有另外几个词，反复被提到：独立，坚强，善良。
+                <br><br>
+                她自己说，她没有什么故事。
+               <br><br>
+                可我们都知道，那不是真的。
+            </div>
+            <a href="#full" class="cta-button">阅读完整故事</a>
+        </div>
+    </section>
+
+    <!-- 内容概览 -->
+    <section class="content-section" id="content">
+        <div class="container">
+            <div class="content-header">
+                <div class="content-label">人物故事</div>
+                <h2 class="content-title">十年的四个关键词</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="sections-grid">
+                <div class="section-card">
+                    <div class="section-number">I</div>
+                    <h3 class="section-title">善良：她认出了那种底色</h3>
+                    <p class="section-content">
+                        我想一个人只有心里先有善良，才能在另一个人身上认出善良。2015年，陈茹走进方田面试，第一念头是想转身就走。环境糟糕，不理想。然而，她没有走——是田老师的话和宣传栏的简历打动了她。
+                    </p>
+                    <a href="#full" class="read-more">继续阅读 →</a>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-number">II</div>
+                    <h3 class="section-title">正直：看见不对就说出来</h3>
+                    <p class="section-content">
+                        在方田之前，她哪敢指出别人的错误，更别提领导的了。来了方田以后，她发现这个地方的文化完全不同。你可以指出问题，那不是对抗，是为了做得更好。这对她的触动很大。
+                    </p>
+                    <a href="#full" class="read-more">继续阅读 →</a>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-number">III</div>
+                    <h3 class="section-title">坚韧：一个人，一个行李箱，去芜湖</h3>
+                    <p class="section-content">
+                        2018年，还不到29岁的她，从前台老师直接变成芜湖分校校长。中间没上过讲台，没教过课。但她答应得很干脆——合肥的孩子遇到了方田，芜湖的孩子也该有机会。
+                    </p>
+                    <a href="#full" class="read-more">继续阅读 →</a>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-number">IV</div>
+                    <h3 class="section-title">进取：在干的过程里成为那个人</h3>
+                    <p class="section-content">
+                        在方田，title永远是滞后的。她说，不是别人认为你有能力了，你才开始做那件事；而是你已经在做了，做着做着，那个title才追上来。她不等评价，先动手。
+                    </p>
+                    <a href="#full" class="read-more">继续阅读 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 照片集合 -->
+    <section class="photos-section" id="photos">
+        <div class="container">
+            <div class="content-header">
+                <div class="content-label">人物相册</div>
+                <h2 class="content-title">见证十年的时刻</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="photos-grid">
+               <div class="photo-item">
+    <img src="1.jpg" alt="2018年芜湖团队" style="width:100%; height:300px; object-fit:cover;">
+    <div class="photo-caption">2018年芜湖团队</div>
+</div>
+
+                <div class="photo-item">
+    <img src="2.jpg" alt="与团队合作" style="width:100%; height:300px; object-fit:cover;">
+    <div class="photo-caption">与团队合作</div>
+</div>
+
+                <div class="photo-item">
+    <img src="3.jpg" alt="参加活动" style="width:100%; height:300px; object-fit:cover;">
+    <div class="photo-caption">参加活动</div>
+</div>
+
+               <div class="photo-item">
+    <img src="4.jpg" alt="校区日常" style="width:100%; height:300px; object-fit:cover;">
+    <div class="photo-caption">校区日常</div>
+</div>
+
+                <div class="photo-item">
+    <img src="5.jpg" alt="参加活动" style="width:100%; height:300px; object-fit:cover;">
+    <div class="photo-caption">参加活动</div>
+</div>
+
+             
+              <div class="photo-item">
+    <img src="6.jpg" alt="陈茹和她的小猫" style="width:100%; height:300px; object-fit:cover;">
+    <div class="photo-caption">陈茹和她的小猫</div>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 完整文章 -->
+    <section class="full-article" id="full">
+        <article>
+            <h2 style="font-size: 38px; color: #2C3E50; margin-bottom: 20px;">朴实是最长的路</h2>
+            <div class="article-meta">
+                <span>文 / 徐晓</span>
+                <span>2026年 · 方田文化人物志</span>
+            </div>
+
+            <div class="article-content">
+                <p>
+                    见到陈茹老师之前，我搜过她的照片。那是一张很标准的证件照，端正，有点像教导主任。我脑子里已经把这个人安排好了：说话掷地有声，眼神锐利，进来先把规矩讲清楚的那种。但真人走过来和我打招呼，我愣了一下。利落的短发，黑金色的圆框眼镜，看起来像高中班里最认真念书的那种学霸。她讲话轻声细语，笑起来眼睛弯弯的，和我想象的完全不一样。她身上有种很难被描述的气质，就像冬天的河水，表面平静，底下的力道藏得很深。
+                </p>
+
+                <p>
+                    茹姐大概就是这样的人——我们叫她茹姐。踏实、理性、有逻辑，这是她自己用来描述自己的词，也是我坐在她对面时真实感受到的。我们采访过她、和她共事过的人，还有另外几个词，反复被提到：独立，坚强，善良。
+                </p>
+
+                <p>
+                    她自己说，她没有什么故事。
+               </p>
+
+                <p>
+
+                    可我们都知道，那不是真的。
+                </p>
+
+                <h3>I. 善良：她认出了那种底色</h3>
+
+                <p>
+                    我一直在想，该怎么写她这十年。我想要写她，就必须先写她的选择。而要写她的选择，就必须先写她这个人身上，那种根本性的东西。
+                </p>
+
+                <p>
+                   2015年前后，方田还在合肥回龙桥国轩凯旋大厦的顶层。一个不大的阁楼，下面两间教室，上面老师办公。陈茹那天走进去面试，第一个念头是想转身就走——环境有点糟糕，不是特别理想。 她当时对“好的教育机构”有一个朴素的想象：首先得有一个好的教学环境。方田当时的条件，显然没达标。
+                </p>
+
+                <p>
+                    是田老师说的话把她留下来的。聊完之后，她有一个很直接的判断——这个人是真的想把教育做好，真的在替学生和家长考虑，不是那种眼里只有钱的老板。还有宣传栏上贴着的老师简历，清华的、科大的、北航的，一个个年轻而优秀。她心里想：跟这群人在一起工作，大概会有很多收获。
+                </p>
+
+                <p>
+                    多年以后她说，这两件打动她的事，现在依然是方田的底色——方田的理念没变，身边的同事依然优秀。
+                </p>
+
+                 <p>
+                    我想一个人只有心里先有善良，才能在另一个人身上认出善良。不是分析，是共鸣。那一刻，陈茹她用自己心底的那把尺，量了量眼前这个地方，觉得值得。这一量，就是十年。
+                </p>
+
+                 <p>
+                    善良这件事，不只留在她选择方田的那个下午，往后也一直跟着她。
+                </p>
+
+                 <p>
+                    王联蒙是芜湖分校的运营老师，2019年入职，茹姐面试了她。她记得第二天到校区，门是锁着的，才知道带教她的运营员工头天离职了。茹姐说：没关系，我来教你。就这样，她手把手地带了三四天，从业务到怎么跟家长开口，陪着她加班，加到晚上十一点，十二点也有。联蒙老师说，那时候她才刚来，一个人，很多东西都不懂，压力非常大，但是她不孤单，因为旁边一直有人。
+                </p>
+
+                 <p>
+                    后来有一年，联蒙老师的父亲生病，在医院里做了一个小手术，她请假去陪护。茹姐问起了她父亲的情况，说要去探视。联蒙老师知道她忙，就推掉了，但那句话她记到现在，她说没想到一个领导，还会这样关心员工家属。
+                </p>
+
+                 <p>
+                    还有一件更小的事。联蒙老师2021年用公司的无息贷款买了房，没有张扬，茹姐是在贷款审批里知道的，后来她给联蒙老师送了一整套餐具。就这样，悄悄地送来了。
+                </p>
+
+                 <p>
+                    联蒙老师说她记住了员工的每一件小事，她心里装着这些人。
+                </p>
+
+                 <p>
+                    汪恺凡是2018年加入方田芜湖分校的老师。他告诉我们，每年快过年的时候，那些来芜湖工作、离家太远回不去的老师，茹姐会先陪他们去海底捞吃顿年夜饭，吃完了再自己往滁州方向赶回家。照片发在分校群里，一桌人，热气腾腾的。恺凡老师说她就像家长。我觉得说得对。不是那种管着你的家长，是那种——你知道她在，所以你安心往前走的那种。
+                </p>
+
+                <h3>II. 正直：看见不对就说出来</h3>
+
+                <p>
+                   茹姐说，她在方田学到最深的一个东西，是“正直”。她在方田之前，也在教培行业待过。那时候哪敢指出别人的错误，更别提领导的了，“你讲这种话，是不是不想在这儿干了？”那种感觉，她懂。久了你会发现，不只是嘴上不讲，心里也开始不确定——那到底是不是错的？到方田以后，她发现这里鼓励的恰恰相反：看到问题就要说出来，不用去顾忌那些有的没的顾虑。
+                </p>
+
+                <p>
+                 她对小事同样较真。9 点上班，她看谁还在啃早饭，会过去说一句：“9 点是该进入工作状态了，不是该吃早饭的时候。”她不是来“管”人的，她是真的把这些写在方田守则上的东西当一回事。
+                </p>
+
+                <p>
+                联蒙老师讲过一件事。分校里有个年轻同事，夏天穿了短裤来上班。茹姐当时没有去找他的主管，也没有绕一圈，就直接走过去说：你这样穿不太妥当，给孩子和家长的印象不好。说完就说完了，没有多余的话。联蒙老师说，她觉得这才是真的正直——不是把话憋着，不是兜圈子，是当面，直接说。
+                </p>
+
+                <p>
+                 新入职的小伙伴常常有顾虑：在公司提出质疑会不会对自己不利？陈茹想对这些人说的话很短： 
+“不用考虑那么多关系层面的事儿，只要你觉得不对，你就大声说出来。”
+
+                </p>
+
+                <p>
+                 她也承认，一次两次把这些话说出来不会立刻改变一个人。但频次多了，就会“润物细无声”。正直不是表演。她说，遇到事情的时候，你看到了，没做到，就要去提醒。就这样。
+                </p>
+
+                <h3>III. 坚韧：一个人，一个行李箱，去芜湖</h3>
+
+                <p>
+                二〇一八年，田老师找到她，问她愿不愿意去芜湖开分校。那一年她还不到二十九岁，在方田的履历是前台老师，直接变成芜湖分校校长，中间没上过讲台，没教过课。但她答应得很干脆。她说，合肥的孩子这么幸运遇到了方田，芜湖的孩子也该有机会。
+                </p>
+
+                <p>
+                    去芜湖之前，她参加了好几场校招。恺凡老师记得，在安师大的招聘会上，方田就一张展台，她一个人在那里发折页。他当时看了看，想：哎，这个机构我怎么没听说过？这就是那时候的芜湖分校——一个人，一张桌子，一摞折页。
+                </p>
+
+                <p>
+                    茹姐到芜湖的第一天，我很想好好地写一写。她当时听到这个问题，先是大笑，再好像腼腆又好像自豪地说：我现在还记得那一天。
+                </p>
+
+                <p>
+                    她说那天她扫了一辆哈啰单车。从安师大城南校区出发，顺着长江路一路向北，对着地图，把芜湖市最好的几所中小学，一所一所骑过去。一路骑，一路问。问学校门口的家长——这学校怎么样？回去再上网查数据。就在当天，她把选址定在了芜湖市最好的二十七中旁边，也就是今天星隆校区所在的位置，那个现在有五千名学生、芜湖分校规模最大的校区。
+                </p>
+
+                <p>
+                    送走了来帮忙招聘的老师们，她拖着一个行李箱，一个人站在火车站外面，目送他们进站。她说那一瞬间有点凄凉——我一个人了，好惨啊。
+                </p>
+
+                <p>
+                    那天晚上她签完房屋租约已经快 10 点，超市都关门了。她什么都没有，行李箱里只有一个被套，没有被子。她问了房东，打车去了一条还亮着灯的老街，买了一床盖的、一床垫的，回去把被套套上。
+                </p>
+
+                <p>
+                    那是她在芜湖的第一夜。
+                </p>
+
+                <p>
+                    没有人鼓掌，没有人记录，没有人知道。
+                </p>
+
+                <p>
+                    后来，她在芜湖干了将近七年。那七年里，有很多外面的事，是她自己扛着的，没有让老师们知道。疫情，双减，发工资困难，要去教育局沟通，要做各种公关和拜访——那些周旋，那些难，她一个人消化，消化完了再来告诉大家：没事，咱们继续。
+                </p>
+
+                <p>
+                    联蒙老师说，她给人一种靠山的感觉。我们只要把教学做好，把服务做好，后面的事有她。恺凡老师说，老板都这么拼着，你有什么理由不拼。
+                </p>
+
+                <p>
+                    坚韧，不是咬牙死撑。坚韧，是你知道自己为什么在这里，然后一步一步，在没有人看见的地方，继续做该做的事。一件很难的事，现在的感觉压得人喘不过气，一个月后能扛着走，几年后就是轻轻松松了。
+                </p>
+
+                <h3>IV. 进取：在干的过程里成为那个人</h3>
+
+                <p>
+                 如果要给这十年找一句最好的注脚,我想是她自己说的那一句——在方田，title 永远是滞后的。茹姐说，不是别人认为你有能力了，你才开始做那件事；而是你已经在做了，做着做着，那个 title 才追上来。她自己就是这么走过来的。前台做着做着，把 QQ 群、新媒体、教师会议一件件揽过来；揽着揽着，成了一个分校的校长；校长做着做着，又回来重建运营部和行政部。她不等评价，先动手。
+                </p>
+
+                <p>
+                   她也承认，这条路并不轻松。从一个只管前台的人，变成一个“类似于管一家公司”的校长，每个岗位的工作内容、关键点，她都得先自己学会、自己干一遍，才能再去带新来的小伙伴。从什么都不会到哪一个部门都得会。凡是她看得见、能使上劲的事，她都主动去过问、去学、去干。
+                </p>
+
+                <p>
+                   支撑她扛下来的，她说是两样东西——一个是清晰的目标。要把方田的好教学带到芜湖去，要证明这个模式可以被复制。一个是“先干”的方法论。不要在脑子里规划半天再动手，先干，在干的过程当中复盘、总结。她说在自己那想半天，然后想好了，这种方法是对的再照着做，大概率是要废的。
+                </p>
+
+                <p>
+                    联蒙老师说她入职没多久，茹姐就出差去校招了，整个运营部就留她一个人。一个新人，两周都不到，就要开始带新人了。她慌得不行，找茹姐说。茹姐告诉她：此时此刻非我莫属。你做好了，继续做；做错了，复盘，改。就这样。联蒙老师告诉我，这句话她记到现在。还有一件事她印象很深。家长来问孩子的题目，老师们课排得满，没空来讲，怎么办？茹姐自己开始做题。从小学题做到初中题，一道道抠进去，把自己教会，再去跟家长解释。联蒙老师看到以后，也跟着做。后来整个运营部的人，遇到不懂的题，先自己抠，抠不懂再去问老师。
+                </p>
+
+                <p>
+                   不依赖，不推脱，先自己干一遍。这是她给整个团队种下的习惯。
+                </p>
+
+                <p>
+                   有一段时间，她和联蒙老师一起做招生家长会，两个人几乎同时开场，讲完了就兴奋地比报名率——你招了几个？我招了几个？那种劲头，联蒙老师讲起来的时候还带着笑。我想那大概是芜湖最好的那几年，忙得不行，但有劲。
+                </p>
+
+                <p>
+                   到后来，茹姐慢慢学会了放手。
+                </p>
+
+                <p>
+                   联蒙老师说，以前她会把事情从第一步说到第十步，每个细节都交代清楚。后来呢，她发现你已经是一个靠谱的人了，就不再说了，让你自己去做。那种感觉，像是一种认可——你看，我信任你了。
+                </p>
+
+                <p>
+                   一个人带着团队成长，自己也在成长，这大概就是进取真正的样子。
+
+                </p>
+            </div>
+        </article>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <h3 style="font-size: 24px; margin-bottom: 20px;">方田文化</h3>
+            <p>用成长指引成长 · 记录为人处事的艺术</p>
+            <div class="footer-divider"></div>
+            <p style="font-size: 14px;">这是一个方田教育公司的文化案例库，记录那些和方田一起成长的故事。</p>
+        </div>
+        <div class="footer-info">
+            <p>© 2026 方田文化 · 人物志 · VOL.01</p>
+            <p style="margin-top: 10px;">文 / 徐晓 · 排版设计 / 方田人力资源部门</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动链接
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // 页面加载动画
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
